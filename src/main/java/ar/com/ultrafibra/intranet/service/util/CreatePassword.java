@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 @Data
 public class CreatePassword {
 
-    protected final String username = "30715652826";
-    private String secret = "30715652826MEGA@LINK@2023";
+    protected final String username = "*********";
+    private String secret = "********************";
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     protected String createPassword() {
