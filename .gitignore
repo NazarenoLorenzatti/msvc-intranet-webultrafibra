@@ -32,6 +32,9 @@ build/
 /src/main/resources/application.properties
 /src/main/resources/keystore.p12
 /src/main/resources/keys/jcpks.jks
+/src/test/**
+/src/main/java/ar/com/ultrafibra/intranet/config/SecurityConfig.java
+/src/main/java/ar/com/ultrafibra/intranet/service/util/CreatePassword.java
 
 ### VS Code ###
 .vscode/
