@@ -25,7 +25,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(request -> request
-                .requestMatchers("/intranet/restringed/login/**","/intranet/restringed/test/**").permitAll())
+                .requestMatchers(****************).permitAll())
                 .authorizeHttpRequests((authorize) -> authorize
                 .anyRequest().authenticated())
                 .oauth2ResourceServer((oauth2) -> oauth2
