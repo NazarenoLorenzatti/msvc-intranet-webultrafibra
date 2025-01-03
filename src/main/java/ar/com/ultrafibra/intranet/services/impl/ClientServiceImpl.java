@@ -100,7 +100,6 @@ public class ClientServiceImpl implements iClientService {
         typeDate = TYPE_DATE_M.equals(typeDate) ? TYPE_DATE_C : TYPE_DATE_M;
     }
 
-    
     /* PROCESAR IFORMACION DEL CLIENTE */
     private void processClientData(String typeDate, long offset) {
         Date lastDate = calculateLastDate();
@@ -126,23 +125,26 @@ public class ClientServiceImpl implements iClientService {
 
     private void processClients(JsonObject clientes) {
         for (Map.Entry<String, JsonElement> element : clientes.entrySet()) {
+            Client client = new Client();
             long clientId = Long.valueOf(element.getKey());
             if (!clientDao.existsByIdRealSoft(clientId)) {
-                Client client = mapClientData(element);
-                List<Contract> contracts = getContracts(client);
-                if (!contracts.isEmpty()) {
-                    client.setContracts(contracts);
-                }
-                clientDao.save(client);
-                logClient(client);
+                client = mapClientData(element, client);
             } else {
+                client = clientDao.findByIdRealSoft(clientId).get();
+                client = mapClientData(element, client);
                 logClientAlreadyLoaded();
             }
+            List<Contract> contracts = getContracts(client);
+            if (!contracts.isEmpty()) {
+                client.setContracts(contracts);
+            }
+            clientDao.save(client);
+            logClient(client);
         }
     }
 
-    private Client mapClientData(Map.Entry<String, JsonElement> element) {
-        Client client = new Client();
+    private Client mapClientData(Map.Entry<String, JsonElement> element, Client client) {
+
         client.setIdRealSoft(Long.valueOf(element.getKey()));
         JsonObject clientData = element.getValue().getAsJsonObject();
 
@@ -189,8 +191,8 @@ public class ClientServiceImpl implements iClientService {
         if (walletData.isJsonNull()) {
             client.setWallet(STATUS_INACTIVE);
         } else {
-            String walletValue = walletData.getAsJsonObject().get("valor").getAsString();
-            client.setWallet(walletValue != null ? walletValue : STATUS_INACTIVE);
+            JsonElement walletValue = walletData.getAsJsonObject().get("valor");
+            client.setWallet(!walletValue.isJsonNull() ? walletValue.getAsString() : STATUS_INACTIVE);
         }
     }
 
@@ -202,8 +204,6 @@ public class ClientServiceImpl implements iClientService {
         log.info("Cliente ya estaba cargado.");
     }
 
-    
-    
     /* PROCESAMIENTO DE INFORMACION DE LOS CONTRATOS */
     private Date calculateLastDateForContracts() {
         Calendar calendar = Calendar.getInstance();

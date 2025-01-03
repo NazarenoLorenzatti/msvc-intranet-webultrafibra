@@ -42,7 +42,7 @@ public class InvoiceServiceImpl implements iInvoiceService {
 
      
         do {
-            JsonObject jsonResponse = apiGr.getResponseInvoice(offset, format.format(lastDate));
+            JsonObject jsonResponse = apiGr.getResponseCommon(offset,"cmpoficiales" ,format.format(lastDate));
             hasMoreInvoices = processInvoicesResponse(jsonResponse);
             offset += OFFSET_INCREMENT;
         } while (hasMoreInvoices);

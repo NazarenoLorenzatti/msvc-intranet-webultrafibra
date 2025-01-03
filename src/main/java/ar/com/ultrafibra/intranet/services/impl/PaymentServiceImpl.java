@@ -59,7 +59,7 @@ public class PaymentServiceImpl implements iPaymentService {
         Date processingDate = adjustDate(startDate, offsetDays);
 
         do {
-            JsonObject jsonResponse = apiGr.getResponse(offset, "recibos", dateFormatter.format(processingDate));
+            JsonObject jsonResponse = apiGr.getResponseCommon(offset, "recibos", dateFormatter.format(processingDate));
             hasMoreData = handlePaymentsResponse(jsonResponse);
             offset += ITEMS_BATCH_SIZE;
         } while (hasMoreData);

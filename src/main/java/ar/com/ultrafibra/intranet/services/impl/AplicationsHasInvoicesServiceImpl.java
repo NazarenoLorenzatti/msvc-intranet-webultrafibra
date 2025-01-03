@@ -42,7 +42,7 @@ public class AplicationsHasInvoicesServiceImpl implements iAplicationsHasInvoice
         List<Payment> payments = fetchPaymentsForCurrentMonth();
 
         if (payments.isEmpty()) {
-            log.info("No payments found for the current month.");
+            log.info("No se encontraron Pagos realizados en el mes Corriente");
             return;
         }
 
@@ -50,7 +50,7 @@ public class AplicationsHasInvoicesServiceImpl implements iAplicationsHasInvoice
             processPayment(payment);
         }
 
-        log.info("Finished processing all payments.");
+        log.info("Finalizada la asociacion de Pagos y Facturas.");
     }
 
     private List<Payment> fetchPaymentsForCurrentMonth() {
@@ -60,7 +60,7 @@ public class AplicationsHasInvoicesServiceImpl implements iAplicationsHasInvoice
 
     private void processPayment(Payment payment) {
         if (payment.getAplications().isEmpty()) {
-            log.info("No applications found for payment with ID: {}", payment.getIdRealSoftware());
+            log.info("No se encontro ninguna aplicacion para el pago con ID: {}", payment.getIdRealSoftware());
             return;
         }
 
@@ -76,7 +76,7 @@ public class AplicationsHasInvoicesServiceImpl implements iAplicationsHasInvoice
         mapInvoiceToEntity(application, aplicationHasInvoice);
 
         aplicationsHasInvoiceDao.save(aplicationHasInvoice);
-        log.info("Saved application-invoice with comprobant number: {}", aplicationHasInvoice.getNumber_comprobant());
+        log.info("Se guardo la aplicacion al comprobante Numero: {}", aplicationHasInvoice.getNumber_comprobant());
     }
 
     private AplicationsHasInvoices findOrCreateAplicationsHasInvoice(Payment payment) {

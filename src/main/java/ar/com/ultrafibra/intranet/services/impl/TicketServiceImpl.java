@@ -32,7 +32,10 @@ public class TicketServiceImpl implements iTicketService {
     private iClientDao clientDao;
 
     private static final String DATE_FORMAT = "dd-MM-yyyy";
-    private static final int DAYS_TO_SUBTRACT = -4;
+    private static final int DAYS_TO_SUBTRACT = -3;
+    private static final String TYPE_DATE_M = "modi";
+    private static final String TYPE_DATE_C = "crea";
+    private String typeDate = TYPE_DATE_C;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
     @Async
@@ -41,7 +44,7 @@ public class TicketServiceImpl implements iTicketService {
         Auxiliar auxiliar = auxiliarDao.findByAuxiliarKey("casos");
         long offset = auxiliar.getValue();
         Date lastDate = getLastDate(DAYS_TO_SUBTRACT);
-
+        this.toggleTypeDate();
         while (true) {
             JsonObject response = apiGestionReal.getResponseTicket(offset, "crea", dateFormat.format(lastDate));
 
@@ -57,6 +60,10 @@ public class TicketServiceImpl implements iTicketService {
             auxiliar.setValue(offset);
             auxiliarDao.save(auxiliar);
         }
+    }
+    
+        private void toggleTypeDate() {
+        typeDate = TYPE_DATE_M.equals(typeDate) ? TYPE_DATE_C : TYPE_DATE_M;
     }
 
     private void processTickets(JsonArray tickets) {
