@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-/*
+
 @Slf4j
 @Data
 @Service
@@ -159,9 +159,9 @@ public class UserServiceImpl implements iUserService {
         return new ResponseEntity<>(response, status);
     }
 }
-*/
 
 
+/*
 @Slf4j
 @Data
 @Service
@@ -321,3 +321,4 @@ public class UserServiceImpl implements iUserService {
         }
     }
 }
+*/

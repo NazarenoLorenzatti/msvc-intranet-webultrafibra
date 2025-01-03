@@ -16,7 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-/*
+
 @Slf4j
 @Service
 public class UserPortalWebServiceImpl implements iUserPortalWebService {
@@ -124,11 +124,11 @@ public class UserPortalWebServiceImpl implements iUserPortalWebService {
     }
 }
 
-*/
 
 
 
 
+/*
 
 @Slf4j
 @Service
@@ -266,4 +266,4 @@ public class UserPortalWebServiceImpl implements iUserPortalWebService {
         }
     }
 
-}
+}*/

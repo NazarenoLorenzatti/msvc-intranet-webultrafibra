@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.*;
 import org.springframework.stereotype.Service;
 import java.util.Calendar;
-/*
+
 @Slf4j
 @Data
 @Service
@@ -39,9 +39,9 @@ public class PaymentServiceImpl implements iPaymentService {
     private static final int ITEMS_BATCH_SIZE = 100;
     private final SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT);
 
-    @Async*/
+    @Async
 //    @Scheduled(cron = "0 */60 * * * *")
-    /*public void getPayments() {
+    public void getPayments() {
         processPayments(new Date(), DAYS_OFFSET);
     }
 
@@ -218,9 +218,9 @@ public class PaymentServiceImpl implements iPaymentService {
             }
         }
     }
-}*/
+}
 
-
+/*
 @Slf4j
 @Data
 @Service
@@ -244,9 +244,9 @@ public class PaymentServiceImpl implements iPaymentService {
     private String ofDate = "";
     private SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
-    @Async
-    @Scheduled(cron = "0 */60 * * * *")
-    public void getPayments() throws InterruptedException {
+    @Async*/
+    //@Scheduled(cron = "0 */60 * * * *")
+    /*public void getPayments() throws InterruptedException {
         boolean request = true;
 //        Auxiliar auxiliar = auxiliarDao.findByAuxiliarKey("cmpoficiales");
         long offset = 0;
@@ -452,5 +452,5 @@ public class PaymentServiceImpl implements iPaymentService {
         }
         return payment;
     }
-}
+}*/
  

@@ -1,4 +1,4 @@
-/*package ar.com.ultrafibra.intranet.services.impl;
+package ar.com.ultrafibra.intranet.services.impl;
 
 import ar.com.ultrafibra.intranet.dao.iUserDao;
 import ar.com.ultrafibra.intranet.entities.Jwt;
@@ -82,10 +82,10 @@ public class LoginServiceImpl implements iLoginService {
         response.setMetadata("Respuesta nok", "-1", errorMessage);
         return new ResponseEntity<>(response, status);
     }
-}*/
+}
 
 
-
+/*
 package ar.com.ultrafibra.intranet.services.impl;
 
 import ar.com.ultrafibra.intranet.dao.iUserDao;
@@ -159,3 +159,4 @@ public class LoginServiceImpl implements iLoginService {
         }
     }
 }
+*/

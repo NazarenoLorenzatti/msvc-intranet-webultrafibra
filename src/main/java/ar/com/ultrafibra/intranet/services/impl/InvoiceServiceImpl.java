@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.*;
 import org.springframework.stereotype.Service;
-/*
+
 @Slf4j
 @Data
 @Service
@@ -33,9 +33,9 @@ public class InvoiceServiceImpl implements iInvoiceService {
 
     private final SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
 
-    @Async*/
-//    @Scheduled(cron = "0 */75 * * * *")
-    /*public void updateInvoices() {
+    @Async
+  //@Scheduled(cron = "0 */75 * * * *")
+    public void updateInvoices() {
         long offset = 0;
         Date lastDate = calculateLastDate(DAYS_TO_SUBTRACT);
         boolean hasMoreInvoices;
@@ -150,9 +150,9 @@ public class InvoiceServiceImpl implements iInvoiceService {
             }
         });
     }
-}*/
+}
 
-
+/*
 @Slf4j
 @Data
 @Service
@@ -171,9 +171,9 @@ public class InvoiceServiceImpl implements iInvoiceService {
     private SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
     
-    @Async
-    @Scheduled(cron = "0 */75 * * * *")
-    public void updateInvoices() {
+    @Async*/
+//    @Scheduled(cron = "0 */75 * * * *")
+  /*  public void updateInvoices() {
         boolean request = true;
 //        Auxiliar auxiliar = auxiliarDao.findByAuxiliarKey("cmpoficiales");
         long offset = 0;
@@ -305,4 +305,4 @@ public class InvoiceServiceImpl implements iInvoiceService {
     }
 
 }
-
+*/
