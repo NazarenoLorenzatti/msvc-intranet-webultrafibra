@@ -95,7 +95,7 @@ public class ServiceOrderServiceImpl implements iServiceOrderService {
     );
 
     @Async
-    @Scheduled(cron = "0 */20 * * * *")
+//    @Scheduled(cron = "0 */20 * * * *")
     public void getServiceOrders() {
         long offset = 0;
         Date lastDate = calculateLastDate(DAYS_TO_SUBTRACT);
