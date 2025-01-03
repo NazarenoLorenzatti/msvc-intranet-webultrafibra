@@ -75,8 +75,8 @@ public class IntranetController {
     public void test() throws Exception {
 
 //        clientService.getClients();
-        clientService.updateClients();
-//            clientService.updateContracts();
+//        clientService.updateClients();
+            clientService.updateContracts();
 //        clientService.setHistoric();
 //        aplicationsHasInvoceService.saveAplicacionHasInvoice();
 //        clientService.actualizarContratosManualmente();

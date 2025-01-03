@@ -39,7 +39,7 @@ public class ClientServiceImpl implements iClientService {
     private String typeDate = "m";
 
     @Async
-    @Scheduled(cron = "0 */30 * * * *")
+    @Scheduled(cron = "0 */15 * * * *")
     public void getClients() throws InterruptedException {
         boolean request = true;
 //        Auxiliar auxiliar = auxiliarDao.findByAuxiliarKey("cmpoficiales");
@@ -47,7 +47,7 @@ public class ClientServiceImpl implements iClientService {
         Date lastDate = new Date();
         Calendar calendar = Calendar.getInstance();  // Obtiene la fecha actual
         calendar.setTime(lastDate);
-        calendar.add(Calendar.DAY_OF_YEAR, -4);
+        calendar.add(Calendar.DAY_OF_YEAR, -60);
         lastDate = calendar.getTime();
 
         do {
@@ -130,7 +130,7 @@ public class ClientServiceImpl implements iClientService {
     }
 
     @Async
-    @Scheduled(cron = "0 00 1,7 * * *", zone = "America/Argentina/Buenos_Aires")
+    @Scheduled(cron = "0 0 */12 * * *")
     public void updateClients() {
         if (this.typeDate.equals("m")) {
             this.typeDate = "c";
@@ -224,13 +224,13 @@ public class ClientServiceImpl implements iClientService {
     }
 
     @Async
-    @Scheduled(cron = "0 00 22,3 * * *", zone = "America/Argentina/Buenos_Aires")
+    @Scheduled(cron = "0 0 */6 * * *")
     @Transactional
     public void updateContracts() {
         Date lastDate = new Date();
         Calendar calendar = Calendar.getInstance();  // Obtiene la fecha actual
         calendar.setTime(lastDate);
-        calendar.add(Calendar.DAY_OF_YEAR, -6);
+        calendar.add(Calendar.DAY_OF_YEAR, -7);
         lastDate = calendar.getTime();
         JsonObject jsonResponse = apiGr.getResponseUpdateContract(this.format.format(lastDate), "m");
 //        JsonObject jsonResponse = apiGr.getResponseUpdateContract("01-11-2024", "m");

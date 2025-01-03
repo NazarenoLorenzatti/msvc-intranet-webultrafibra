@@ -16,7 +16,7 @@ public class CreatePassword {
     
     @Value("${app.secret}")
     private String secret;
-//    private String secret = "30715652826MEGA@LINK@2023";
+
     
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 

@@ -8,7 +8,6 @@ import ar.com.ultrafibra.intranet.entities.AplicationsHasInvoices;
 import ar.com.ultrafibra.intranet.entities.Invoice;
 import ar.com.ultrafibra.intranet.entities.Payment;
 import ar.com.ultrafibra.intranet.service.iAplicationsHasInvoicesService;
-import jakarta.transaction.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -38,7 +37,6 @@ public class AplicationsHasInvoicesServiceImpl implements iAplicationsHasInvoice
 
     @Async
     @Override
-//    @Transactional
     @Scheduled(cron = "0 00 04 * * *", zone = "America/Argentina/Buenos_Aires")
     public void saveAplicacionHasInvoice() {
         Date month = new Date();

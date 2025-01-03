@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class ResponseRest {
 
-    private ArrayList<HashMap<String, String>> metadata = new ArrayList<>();
+    private final ArrayList<HashMap<String, String>> metadata = new ArrayList<>();
 
     public ArrayList<HashMap<String, String>> getMetadata() {
         return metadata;
@@ -13,7 +13,7 @@ public class ResponseRest {
     
     public void setMetadata(String respuesta, String codigo, String info) {
 		
-		HashMap<String, String> mapeo = new HashMap<String, String>();
+		HashMap<String, String> mapeo = new HashMap<>();
 		
 		mapeo.put("respuesta", respuesta);
 		mapeo.put("codigo", codigo);
