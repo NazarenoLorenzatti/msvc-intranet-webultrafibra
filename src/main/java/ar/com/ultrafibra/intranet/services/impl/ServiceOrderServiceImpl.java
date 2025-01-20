@@ -32,7 +32,6 @@ public class ServiceOrderServiceImpl implements iServiceOrderService {
     private iServiceOrderDao serviceOrderDao;
 
     private static final String DATE_FORMAT = "dd-MM-yyyy";
-//    private static final int OFFSET_INCREMENT = 100;
     private static final int DAYS_TO_SUBTRACT = -4;
 
     private SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
@@ -95,9 +94,9 @@ public class ServiceOrderServiceImpl implements iServiceOrderService {
     );
 
     @Async
-//    @Scheduled(cron = "0 */20 * * * *")
+    @Scheduled(cron = "0 */20 * * * *")
+    @Override
     public void getServiceOrders() {
-        long offset = 0;
         Date lastDate = calculateLastDate(DAYS_TO_SUBTRACT);
         JsonObject jsonResponse = apiGr.getResponseOrderService(this.format.format(lastDate), "m");
 //        JsonObject jsonResponse = apiGr.getResponseOrderService("01-11-2024", "m");

@@ -76,9 +76,9 @@ public class IntranetController {
 
 //        clientService.getClients();
 //        clientService.updateClients();
-//            clientService.updateContracts();
+            clientService.updateContracts();
 //        clientService.setHistoric();
-        aplicationsHasInvoceService.saveAplicacionHasInvoice();
+//        aplicationsHasInvoceService.saveAplicacionHasInvoice();
 //           ticketService.getTickets();
 //        invoiceService.updateInvoices();
 //        paymentService.getPayments();
