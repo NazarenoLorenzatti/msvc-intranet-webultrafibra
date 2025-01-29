@@ -35,7 +35,7 @@ public class PaymentServiceImpl implements iPaymentService {
     private iItemDao itemDao;
 
     private static final String DATE_FORMAT = "dd-MM-yyyy";
-    private static final int DAYS_OFFSET = -8;
+    private static final int DAYS_OFFSET = -5;
     private static final int ITEMS_BATCH_SIZE = 100;
     private final SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT);
 

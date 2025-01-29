@@ -8,6 +8,12 @@ import ar.com.ultrafibra.intranet.entities.UserPortalWeb;
 import ar.com.ultrafibra.intranet.responses.UserPortalWebResponseRest;
 import ar.com.ultrafibra.intranet.responses.UserResponseRest;
 import ar.com.ultrafibra.intranet.service.iAplicationsHasInvoicesService;
+import ar.com.ultrafibra.intranet.service.iClientService;
+import ar.com.ultrafibra.intranet.service.iInvoiceService;
+import ar.com.ultrafibra.intranet.service.iLoginService;
+import ar.com.ultrafibra.intranet.service.iPaymentService;
+import ar.com.ultrafibra.intranet.service.iServiceOrderService;
+import ar.com.ultrafibra.intranet.service.iUserPortalWebService;
 import ar.com.ultrafibra.intranet.services.impl.AplicationsHasInvoicesServiceImpl;
 import ar.com.ultrafibra.intranet.services.impl.ClientServiceImpl;
 import ar.com.ultrafibra.intranet.services.impl.InvoiceServiceImpl;
@@ -45,18 +51,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class IntranetController {
 
     @Autowired
-    private ClientServiceImpl clientService;
-    @Autowired
-    private TicketServiceImpl ticketService;
-    @Autowired
-    private PaymentServiceImpl paymentService;
-    @Autowired
-    private InvoiceServiceImpl invoiceService;
-    @Autowired
-    private ServiceOrderServiceImpl orderService;
+    private iClientService clientService;
 
     @Autowired
-    private LoginServiceImpl loginService;
+    private iPaymentService paymentService;
+    
+    @Autowired
+    private iInvoiceService invoiceService;
+    @Autowired
+    private iServiceOrderService orderService;
+
+    @Autowired
+    private iLoginService loginService;
 
     @Autowired
     private iAplicationsHasInvoicesService aplicationsHasInvoceService;
@@ -68,7 +74,7 @@ public class IntranetController {
     private iRolesDao roleDao;
 
     @Autowired
-    private UserPortalWebServiceImpl portalWeb;
+    private iUserPortalWebService portalWeb;
 
     @GetMapping(path = "/test")
     @PermitAll

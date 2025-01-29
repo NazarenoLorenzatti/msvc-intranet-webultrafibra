@@ -63,8 +63,8 @@ public class ClientServiceImpl implements iClientService {
     @Transactional
     public void updateContracts() {
         Date lastDate = calculateLastDateForContracts();
-        JsonObject jsonResponse = apiGr.getResponseUpdateContract(format.format(lastDate), TYPE_DATE_M);
-//        JsonObject jsonResponse = apiGr.getResponseUpdateContract("01-10-2024", TYPE_DATE_M);
+//        JsonObject jsonResponse = apiGr.getResponseUpdateContract(format.format(lastDate), TYPE_DATE_M);
+        JsonObject jsonResponse = apiGr.getResponseUpdateContract("01-10-2024", TYPE_DATE_M);
         if (jsonResponse != null) {
             JsonArray contracts = jsonResponse.get("contratos").getAsJsonArray();
             if (contracts != null) {
@@ -343,6 +343,8 @@ public class ClientServiceImpl implements iClientService {
                     contract.setComming(entry.getValue().getAsString());
                 case "localidad" ->
                     contract.setCity(entry.getValue().getAsString());
+                case "estado" ->
+                    setContractStatus(contract, entry.getValue().getAsString());
                 case "lat" ->
                     contract.setLat(entry.getValue().isJsonNull() ? "Sin Cargar" : entry.getValue().getAsString());
                 case "lng" ->
